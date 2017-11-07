@@ -7,23 +7,22 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"company"})
-@EqualsAndHashCode(exclude = {"company"})
+@ToString(exclude = "company")
+@EqualsAndHashCode(exclude = "company")
 @Builder
-@Entity(noClassnameStored = true, value = "call")
-public class Call {
+@Entity(noClassnameStored = true, value = "task")
+public class Task {
     @Id
     private ObjectId id;
-    private Date date;
     private String description;
+    private Date dateExec;
+    private boolean checker = false;
     @JsonIgnore
     @Reference
     private Company company;

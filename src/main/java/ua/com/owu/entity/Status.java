@@ -7,23 +7,25 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "call")
-@EqualsAndHashCode(exclude = "call")
+@ToString(exclude = {"offers","company"})
+@EqualsAndHashCode(exclude = {"offers","company"})
 @Builder
-@Entity(noClassnameStored = true, value = "result")
-public class Result {
+@Entity(noClassnameStored = true, value = "status")
+public class Status {
     @Id
     private ObjectId id;
-    private String status;
-    private Date answerDate;
-
+    private String value;
     @JsonIgnore
     @Reference
-    private Call call;
+    private List<Offer> offers = new ArrayList<>();
+    @JsonIgnore
+    @Reference
+    private Company company;
 }

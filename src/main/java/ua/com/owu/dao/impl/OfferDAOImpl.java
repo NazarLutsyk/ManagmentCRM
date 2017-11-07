@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 import ua.com.owu.dao.OfferDAO;
 import ua.com.owu.entity.Offer;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Repository
@@ -31,6 +33,14 @@ public class OfferDAOImpl implements OfferDAO{
     public List<Offer> findAll() {
         List<Offer> offers = datastore.find(Offer.class).asList();
         System.out.println("Fount all offers:" + offers);
+        return offers;
+    }
+
+    @Override
+    public List<Offer> findByIds(Collection<String> ids) {
+        List<Offer> offers = new ArrayList<>();
+        ids.forEach(id -> offers.add(find(id)));
+        System.out.println("Found list offers by ids:" + ids);
         return offers;
     }
 

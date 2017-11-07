@@ -38,5 +38,7 @@ public class WebConfig extends WebMvcConfigurerAdapter{
         registry.addResourceHandler("/images/**").addResourceLocations("/images/");
         registry.addResourceHandler("/script/**").addResourceLocations("/static/scripts/");
         registry.addResourceHandler("/externalLibsJs/jQuery/**").addResourceLocations("/static/externalLibsJs/jQuery/");
+        registry.addResourceHandler("/externalLibsJs/select2JS/**").addResourceLocations("/static/externalLibsJs/select2-4.0.3/dist/js/");
+        registry.addResourceHandler("/externalLibsJs/select2CSS/**").addResourceLocations("/static/externalLibsJs/select2-4.0.3/dist/css/");
     }
 }

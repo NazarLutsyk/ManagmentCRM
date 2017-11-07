@@ -25,6 +25,9 @@
     <#--datatable-->
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+
+    <link href="/externalLibsJs/select2CSS/select2.min.css" rel="stylesheet"/>
+    <script src="/externalLibsJs/select2JS/select2.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top">
@@ -36,6 +39,9 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/">Home</a></li>
+                    <li><a href="/companies">Companies</a></li>
+                    <li><a href="/tasks">Tasks</a></li>
+                    <li><a href="/offers">Offers</a></li>
                 </ul>
                 <#--<form action="/logout" class="navbar-form navbar-right" method="post">-->
                     <#--<input type="submit" value="Logout" class="btn btn-info">-->

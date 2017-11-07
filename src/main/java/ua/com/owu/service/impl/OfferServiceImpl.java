@@ -6,6 +6,7 @@ import ua.com.owu.dao.OfferDAO;
 import ua.com.owu.entity.Offer;
 import ua.com.owu.service.OfferService;
 
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -26,6 +27,11 @@ public class OfferServiceImpl implements OfferService {
     @Override
     public List<Offer> findAll() {
         return offerDAO.findAll();
+    }
+
+    @Override
+    public List<Offer> findByIds(Collection<String> ids) {
+        return offerDAO.findByIds(ids);
     }
 
     @Override
