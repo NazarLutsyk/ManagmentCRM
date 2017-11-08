@@ -28,8 +28,11 @@
 
     <link href="/externalLibsJs/select2CSS/select2.min.css" rel="stylesheet"/>
     <script src="/externalLibsJs/select2JS/select2.min.js"></script>
+
+    <link rel="stylesheet" href="/style/colorfulTable.css">
 </head>
 <body>
+<#setting time_zone="Europe/Kyiv">
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
         <div class="container-fluid">

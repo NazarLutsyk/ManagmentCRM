@@ -36,7 +36,7 @@ $('td').blur(function () {
                 case "date":
                     if (validateDate($(this).text())) {
                         let date = new Date($(this).text());
-                        date.setHours(date.getHours());
+                        date.setHours(date.getHours()+2);
                         entity[$(this).attr('field')] = date;
                     }
                     else {

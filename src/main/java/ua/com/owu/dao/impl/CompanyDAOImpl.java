@@ -17,7 +17,7 @@ public class CompanyDAOImpl implements CompanyDAO{
     @Override
     public void save(Company company) {
         datastore.save(company);
-        System.out.println("Company" + company + "saved");
+        System.out.println("Company saved:"+ company );
     }
 
     @Override

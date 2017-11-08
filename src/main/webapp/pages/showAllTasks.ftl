@@ -21,7 +21,7 @@
 </form>
 <br>
 <#if tasks?size != 0>
-<table class="table table-hover table-bordered" data-table='true' path="/liveEditTask">
+<table class="table table-hover table-bordered" data-table='true' path="/liveEditTask" id="tasksTable">
     <thead>
     <tr class="bg-primary">
         <th>Date</th>
@@ -39,11 +39,14 @@
             <a href="/companies/${task.company.id}">${task.company.name}</a>
         </td>
         <td edit="false">
-            <input name="taskChecker"
+            <input name="taskChecker" class="checkbox"
                    type="checkbox"
                    <#if task.checker?string == 'true'>checked</#if>
                    data-taskId="${task.id}"
             >
+            <p style="display: none">
+                ${task.checker?string}
+            </p>
         </td>
         <td edit="false">
             <form action="/deleteTask/${task.id}" method="post">
@@ -59,5 +62,6 @@
 <script src="/script/liveEdit.js"></script>
 <script src="/script/updateValidation.js"></script>
 <script src="/script/reverseTaskChecker.js"></script>
+<script src="/script/colorfulTasks.js"></script>
 </body>
 </html>

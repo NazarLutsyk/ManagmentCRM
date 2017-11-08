@@ -25,6 +25,65 @@
         </tr>
     </table>
     <hr>
+<#if company.tasks?size != 0>
+    <h3>Tasks</h3>
+    <table class="table table-hover table-bordered" data-table='true' path="/liveEditTask" id="tasksTable">
+        <thead>
+        <tr class="bg-primary">
+            <th>Date</th>
+            <th>Description</th>
+            <th>Checked</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <#list company.tasks as task>
+            <tr entityID="${task.id}">
+                <td field="dateExec" type="date">${task.dateExec?string("yyyy/MM/dd HH:mm")}</td>
+                <td field="description">${task.description}</td>
+                <td edit="false">
+                    <input name="taskChecker"
+                           type="checkbox"
+                           <#if task.checker?string == 'true'>checked</#if>
+                           data-taskId="${task.id}"
+                    >
+                    <p style="display: none">
+                    ${task.checker?string}
+                    </p>
+                </td>
+                <td edit="false">
+                    <form action="/deleteTask/${task.id}" method="post">
+                        <input type="submit" class="btn btn-danger btn-sm" value="Exit">
+                    </form>
+                </td>
+            </tr>
+        </#list>
+    </table>
+</#if>
+    <hr>
+<#if company.calls?size != 0>
+    <h3>Calls</h3>
+    <table class="table table-hover table-bordered" data-table='true' path="/liveEditCall">
+        <thead>
+        <tr class="bg-primary">
+            <th>Date</th>
+            <th>Description</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <#list company.calls as call>
+            <tr entityID="${call.id}">
+                <td field="date" type="date">${call.date?string("yyyy/MM/dd HH:mm")}</td>
+                <td field="description">${call.description}</td>
+                <td edit="false">
+                    <form action="/deleteCall/${call.id}" method="post">
+                        <input type="submit" class="btn btn-danger btn-sm" value="Exit">
+                    </form>
+                </td>
+            </tr>
+        </#list>
+    </table>
+</#if>
+    <hr>
     <#if company.statuses?size != 0>
     <h3>Statuses</h3>
     <table class="table table-hover table-bordered" data-table="true" path="/liveEditStatus">
@@ -85,61 +144,6 @@
     </table>
     <hr>
     </#if>
-    <#if company.calls?size != 0>
-    <h3>Calls</h3>
-    <table class="table table-hover table-bordered" data-table='true' path="/liveEditCall">
-        <thead>
-        <tr class="bg-primary">
-            <th>Date</th>
-            <th>Description</th>
-            <th>Delete</th>
-        </tr>
-        </thead>
-    <#list company.calls as call>
-        <tr entityID="${call.id}">
-            <td field="date" type="date">${call.date?string("yyyy/MM/dd HH:mm")}</td>
-            <td field="description">${call.description}</td>
-            <td edit="false">
-                <form action="/deleteCall/${call.id}" method="post">
-                    <input type="submit" class="btn btn-danger btn-sm" value="Exit">
-                </form>
-            </td>
-        </tr>
-    </#list>
-    </table>
-    <hr>
-    </#if>
-    <#if company.tasks?size != 0>
-    <h3>Tasks</h3>
-    <table class="table table-hover table-bordered" data-table='true' path="/liveEditTask">
-        <thead>
-        <tr class="bg-primary">
-            <th>Date</th>
-            <th>Description</th>
-            <th>Checked</th>
-            <th>Delete</th>
-        </tr>
-        </thead>
-    <#list company.tasks as task>
-        <tr entityID="${task.id}">
-            <td field="dateExec" type="date">${task.dateExec?string("yyyy/MM/dd HH:mm")}</td>
-            <td field="description">${task.description}</td>
-            <td edit="false">
-                <input name="taskChecker"
-                       type="checkbox"
-                       <#if task.checker?string == 'true'>checked</#if>
-                       data-taskId="${task.id}"
-                >
-            </td>
-            <td edit="false">
-                <form action="/deleteTask/${task.id}" method="post">
-                    <input type="submit" class="btn btn-danger btn-sm" value="Exit">
-                </form>
-            </td>
-        </tr>
-    </#list>
-    </table>
-    </#if>
 </div>
 </body>
 </html>
@@ -148,3 +152,4 @@
 <script src="/script/liveEdit.js"></script>
 <script src="/script/updateValidation.js"></script>
 <script src="/script/reverseTaskChecker.js"></script>
+<script src="/script/colorfulTasks.js"></script>

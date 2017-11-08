@@ -5,9 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import ua.com.owu.entity.Company;
+import ua.com.owu.entity.Task;
 import ua.com.owu.service.CompanyService;
 import ua.com.owu.service.OfferService;
 import ua.com.owu.service.TaskService;
+
+import java.util.List;
 
 @Controller
 public class RouteController {
@@ -49,7 +53,8 @@ public class RouteController {
     @GetMapping("/companies/{companyId}")
     public String showCompany(@PathVariable String companyId,
                             Model model) {
-        model.addAttribute("company",companyService.find(companyId));
+        Company company = companyService.find(companyId);
+        model.addAttribute("company", company);
         return "showCompany";
     }
 
