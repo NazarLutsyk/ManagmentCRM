@@ -7,25 +7,26 @@ $(document).ready(function () {
     for (let row of rows) {
         let dateExec = new Date();
         let checker = false;
+        $(row).removeClass("bg-color-actual bg-color-danger bg-color-success");
         $(row).children("td").each(function (index, elem) {
-            if ($(elem).attr("field") == "dateExec") {
+            if ($(elem).attr("field") === "dateExec") {
                 dateExec = new Date($(elem).text());
             }
             if ($(elem).children("input").attr("checked")) {
                 checker = true;
             }
         });
-        if (now.getYear() == dateExec.getYear() && now.getMonth() == dateExec.getMonth()
-            && now.getDay() == dateExec.getDay()
+        if (now.getUTCDate() === dateExec.getUTCDate()
             && checker == false) {
             $(row).addClass("bg-color-actual");
+            console.log(row, dateExec);
         }
-        if ((now.getYear() > dateExec.getYear() || now.getMonth() > dateExec.getMonth()
-                || now.getDay() > dateExec.getDay())
-            && checker == false) {
+        if (now > dateExec && checker == false) {
             $(row).addClass("bg-color-danger");
+            console.log(dateExec);
         }
-        if (checker == true)
+        if (checker == true) {
             $(row).addClass("bg-color-success");
+        }
     }
 });
